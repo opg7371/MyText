@@ -1,0 +1,214 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".Main_activity_1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/topArea"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:weightSum="2"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:scaleType="fitXY"
+            android:layout_weight="1"
+            android:id="@+id/save"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:onClick="save1"
+            android:contentDescription="@string/description"
+            android:src = "@mipmap/ic_action_save" />
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <ImageButton
+        android:contentDescription="@string/description"
+        android:scaleType="fitXY"
+            android:id="@+id/undo"
+            android:layout_marginLeft="20dp"
+             android:onClick="UndoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src = "@mipmap/ic_action_undo" />
+        <ImageButton
+            android:scaleType="fitXY"
+            android:layout_weight="1"
+            android:id="@+id/redo"
+            android:onClick="RedoButton"
+            android:contentDescription="@string/description"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src = "@mipmap/ic_action_redo" />
+        <ImageButton
+            android:scaleType="fitXY"
+            android:id="@+id/font"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            android:contentDescription="@string/description"
+            android:layout_height="40dp"
+            android:src = "@mipmap/ic_action_font_faces" />
+        <ImageButton
+            android:scaleType="fitXY"
+            android:id="@+id/attachment"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/description"
+            android:layout_height="40dp"
+            android:src = "@mipmap/ic_action_attachment_2" />
+        <ImageButton
+            android:scaleType="fitXY"
+            android:id="@+id/camera"
+            android:layout_width="wrap_content"
+            android:onClick="camera1"
+            android:layout_weight="1"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/description"
+            android:layout_height="40dp"
+            android:src = "@mipmap/ic_action_camera" />
+
+        <ImageButton
+
+            android:scaleType="fitXY"
+            android:contentDescription="@string/description"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:id="@+id/open"
+            android:onClick="open1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src = "@mipmap/ic_action_signal" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/topArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/middleArea"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <EditText
+            android:layout_width="315dp"
+            android:contentDescription="@string/description"
+            android:padding="5dp"
+
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="30dp"
+            android:hint="Note Title"
+            android:id="@+id/textTitle"
+            android:background="#FFFFFF" />
+         <LinearLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="4"
+             android:id="@+id/textviewlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageButton
+
+                android:scaleType="fitXY"
+                android:contentDescription="@string/description"
+                android:layout_alignParentRight="true"
+                android:onClick="new1"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:id="@+id/new1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src = "@mipmap/ic_action_news" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:layout_width="230dp"
+                android:layout_height="30dp"
+                android:id="@+id/notebook1"
+                 android:hint="FIRST NOTEBOOK"
+                android:background="#FFFFFF"/>
+            <ImageButton
+
+                android:scaleType="fitXY"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:id="@+id/remainder"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src = "@mipmap/ic_action_alarm" />
+
+            <ImageButton
+
+                android:scaleType="fitXY"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:id="@+id/Email1"
+                android:onClick="email1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src = "@mipmap/ic_action_gmail" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/textviewlayout"
+        android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="355dp"
+        android:layout_height="290dp"
+        android:background="#FFFFFF"
+        android:id="@+id/mainText"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:layout_alignParentBottom="true"
+       android:hint="What is on your mind?"
+         />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_below="@id/textviewlayout"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_gravity="bottom"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:textColor="#b5f681"
+                android:background="#c23068"
+                android:text="Log In"/>
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="5dp" />
+            <Button
+                android:layout_gravity="bottom"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:background="#c23068"
+                android:textColor="#b5f681"
+                android:text="Create An Account"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
