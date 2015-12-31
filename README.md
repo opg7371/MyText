@@ -1,0 +1,2 @@
+# MyText
+The text editor named as MyText is a simple mobile text editor coded in android(Java).The software used is Android studio and the platform used is Windows 8. The main objective of creating this text editor is to understand the basic functionalities of Android. The Text Editor consists of simple features like undo, redo, cut, copy, paste, save, open, new, email, camera., etc. I will also be implementing the networking after some time
