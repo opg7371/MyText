@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#000000"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_margin="1dp"
+        android:background="@android:color/darker_gray">
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#00f"
+                android:text="Font:" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="7"
+                >
+            <ImageButton
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:id="@+id/bold"
+                android:layout_height="wrap_content"
+                
+                android:src="@mipmap/ic_action_achievement" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/italic"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_action_achievement" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/underline"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_action_achievement" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/highlight"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_action_achievement" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/listdot"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_action_achievement" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/listnumber"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_action_achievement" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/checkbox"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_action_achievement" />
+            </LinearLayout>
+                <Button
+                android:id="@+id/dismiss"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Dismiss" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

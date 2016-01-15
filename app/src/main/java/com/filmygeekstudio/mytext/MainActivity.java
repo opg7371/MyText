@@ -1,22 +1,26 @@
 package com.filmygeekstudio.mytext;
 
 import android.app.Activity;
-        import android.content.Context;
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.os.Bundle;
-        import android.os.Handler;
-        import android.os.Looper;
-        import android.provider.MediaStore;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.EditText;
-        import android.widget.Toast;
-        import java.io.FileInputStream;
-        import java.io.FileNotFoundException;
-        import java.io.FileOutputStream;
-        import java.io.IOException;
-        import java.util.AbstractCollection;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by PIYUSH  BADKUL on 12/18/2015.
@@ -29,6 +33,7 @@ public class MainActivity extends Activity {
     private static final String NUMBER_OF_TIMES_RUN_KEY = "NUMBER_OF_TIMES_RUN_KEY";
     private static int flag1 = 1;
     private static int howmanytimesbeenrun = 0;
+    Button btnOpenPopup;
     final static int cameradata = 0;
     String data;
 
@@ -37,14 +42,17 @@ public class MainActivity extends Activity {
 
         final Handler handler = new Handler(Looper.getMainLooper());
         setContentView(R.layout.activity_main);
+
         try {
-            maintext = (EditText) findViewById(R.id.mainText);
+             maintext = (EditText) findViewById(R.id.mainText);
             textFile = (EditText)findViewById(R.id.textTitle);
             notebook = (EditText)findViewById(R.id.notebook1);
             mTextViewUndoRedo = new TextViewUndoRedo(maintext);
         }catch(Exception e) {
             Log.d("I", "I wasn't thinking of this");
         }
+
+
         SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         int defaultValue = 0;
         howmanytimesbeenrun = sharedPreferences.getInt(NUMBER_OF_TIMES_RUN_KEY,defaultValue);
@@ -135,6 +143,28 @@ public class MainActivity extends Activity {
 
 
     // Toast.makeText(getApplicationContext(), "Second Activity Launched..", Toast.LENGTH_LONG).show();
+
+    public void fontButton(View view) {
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = layoutInflater.inflate(R.layout.popup, null);
+        final PopupWindow popupWindow = new PopupWindow(
+                popupView,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
+        btnDismiss.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                popupWindow.dismiss();
+            }
+        });
+
+        popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
+
+    }
 
 
     public void save1(View view) {
