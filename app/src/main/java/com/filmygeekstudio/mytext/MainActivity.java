@@ -4,15 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -36,12 +39,23 @@ public class MainActivity extends Activity {
     Button btnOpenPopup;
     final static int cameradata = 0;
     String data;
-
+    Point p;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         final Handler handler = new Handler(Looper.getMainLooper());
         setContentView(R.layout.activity_main);
+        ImageButton btn_show = (ImageButton) findViewById(R.id.font);
+        btn_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                //Open popup window
+                if (p != null)
+                    showPopup(MainActivity.this, p);
+            }
+        });
+
 
         try {
              maintext = (EditText) findViewById(R.id.mainText);
@@ -115,6 +129,7 @@ public class MainActivity extends Activity {
         return filedata;
     }
 
+
     public String saveTextFile(String content) {
         FileOutputStream fileOutputStream = null;
         try {
@@ -144,35 +159,67 @@ public class MainActivity extends Activity {
 
     // Toast.makeText(getApplicationContext(), "Second Activity Launched..", Toast.LENGTH_LONG).show();
 
-    public void fontButton(View view) {
-        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = layoutInflater.inflate(R.layout.popup, null);
-        final PopupWindow popupWindow = new PopupWindow(
-                popupView,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
-        btnDismiss.setOnClickListener(new Button.OnClickListener() {
+
+  public void onWindowFocusChanged(boolean hasFocus) {
+
+        int[] location = new int[2];
+        ImageButton button = (ImageButton) findViewById(R.id.font);
+
+        // Get the x, y location and store it in the location[] array
+        // location[0] = x, location[1] = y.
+        button.getLocationOnScreen(location);
+
+        //Initialize the Point with x, and y positions
+        p = new Point();
+        p.x = location[0];
+        p.y = location[1];
+    }
+
+    // The method that displays the popup.
+    private void showPopup(final Activity context, Point p) {
+        int popupWidth = 380;
+        int popupHeight = 150;
+
+        // Inflate the popup_layout.xml
+        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
+        LayoutInflater layoutInflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
+
+        // Creating the PopupWindow
+        final PopupWindow popup = new PopupWindow(context);
+        popup.setContentView(layout);
+        popup.setWidth(popupWidth);
+        popup.setHeight(popupHeight);
+        popup.setFocusable(true);
+
+        // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
+        int OFFSET_X = 0;
+        int OFFSET_Y = 0;
+
+
+        // Displaying the popup at the specified location, + offsets.
+        popup.showAtLocation(layout, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
+
+        // Getting a reference to Close button, and close the popup when clicked.
+        Button close = (Button) layout.findViewById(R.id.dismiss);
+        close.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                popupWindow.dismiss();
+                popup.dismiss();
             }
         });
-
-        popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
-
     }
 
 
     public void save1(View view) {
-        Toast.makeText(getApplicationContext(),"Entering in the Try Block..",Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"Entering in the Try Block..",Toast.LENGTH_LONG).show();
         try{
             data=maintext.getText().toString();
             FileOutputStream fOut;
-            Toast.makeText(getApplicationContext(),"Entering in the Next Try Block..",Toast.LENGTH_LONG).show();
+          //  Toast.makeText(getApplicationContext(),"Entering in the Next Try Block..",Toast.LENGTH_LONG).show();
             try {
                 notebook.setText(""+textFile.getText());
                 fOut = openFileOutput(""+textFile.getText(), Context.MODE_PRIVATE);
