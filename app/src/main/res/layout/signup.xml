@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:weightSum="6"
     android:padding="15dp"
-    android:layout_margin="20dp"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     tools:context=".SignUp"
 

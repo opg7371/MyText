@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -36,7 +37,8 @@ public class MainActivity extends Activity {
     private static final String NUMBER_OF_TIMES_RUN_KEY = "NUMBER_OF_TIMES_RUN_KEY";
     private static int flag1 = 1;
     private static int howmanytimesbeenrun = 0;
-    Button btnOpenPopup;
+
+
     final static int cameradata = 0;
     String data;
     Point p;
@@ -178,8 +180,8 @@ public class MainActivity extends Activity {
 
     // The method that displays the popup.
     private void showPopup(final Activity context, Point p) {
-        int popupWidth = 380;
-        int popupHeight = 150;
+        int popupWidth = 1080;
+        int popupHeight = 600;
 
         // Inflate the popup_layout.xml
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
@@ -204,6 +206,15 @@ public class MainActivity extends Activity {
 
         // Getting a reference to Close button, and close the popup when clicked.
         Button close = (Button) layout.findViewById(R.id.dismiss);
+        ImageButton bold = (ImageButton) layout.findViewById(R.id.bold);
+        ImageButton Italics = (ImageButton)layout.findViewById(R.id.italic);
+        final ImageButton under = (ImageButton)findViewById(R.id.underline);
+
+
+        ImageButton highlight = (ImageButton) findViewById(R.id.highlight);
+        ImageButton listdot = (ImageButton)findViewById(R.id.listdot);
+        ImageButton listnumber= (ImageButton)findViewById(R.id.listnumber);
+        ImageButton checkbox = (ImageButton)findViewById(R.id.checkbox);
         close.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -211,17 +222,48 @@ public class MainActivity extends Activity {
                 popup.dismiss();
             }
         });
+        try {
+        bold.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainActivity = new MainActivity();
+                mainActivity.maintext.setTypeface(Typeface.DEFAULT_BOLD);
+            }
+        });
+        }catch (Exception e) {
+            Log.d("Popup", "Problem in Bold Statement");
+            e.printStackTrace();
+        }
+     try {
+        Italics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainActivity = new MainActivity();
+                mainActivity.maintext.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
+            }
+        });
+
+    }catch (Exception e) {
+        Log.d("Popup", "Problem in Bold Statement");
+        e.printStackTrace();
     }
+      /*  under.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity mainActivity = new MainActivity();
+                under.setPaintFlags(under.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
-
-    public void save1(View view) {
+            }
+        });*/
+    }
+       public void save1(View view) {
         //Toast.makeText(getApplicationContext(),"Entering in the Try Block..",Toast.LENGTH_LONG).show();
         try{
             data=maintext.getText().toString();
             FileOutputStream fOut;
           //  Toast.makeText(getApplicationContext(),"Entering in the Next Try Block..",Toast.LENGTH_LONG).show();
             try {
-                notebook.setText(""+textFile.getText());
+                notebook.setText("" + textFile.getText());
                 fOut = openFileOutput(""+textFile.getText(), Context.MODE_PRIVATE);
                 try{
                     fOut.write(data.getBytes());
@@ -235,8 +277,7 @@ public class MainActivity extends Activity {
                 Toast.makeText(getApplicationContext(),"Failed in the Reading of first Try Block..",Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
-
-        }catch (Exception e) {
+        }catch(Exception e) {
             Toast.makeText(getApplicationContext(),"Problem is in Save button.",Toast.LENGTH_LONG).show();
             Log.d("HI", "Problem in the save Button");
             e.printStackTrace();

@@ -1,12 +1,12 @@
 package com.filmygeekstudio.mytext;
 
 import android.app.Activity;
-import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -14,17 +14,22 @@ import android.widget.TextView;
  */
 public class popup extends Activity {
     ImageButton bold,italic,under,highlight,listdot,listnumber,checkbox;
+    MainActivity mainActivity;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Handler handler = new Handler(Looper.getMainLooper());
         setContentView(R.layout.popup);
-        init();
+        mainActivity = new MainActivity();
+
+       // init();
 
     }
-
     public void bold() {
-        TextView tv = (TextView)findViewById(R.id.mainText);
-        tv.setTypeface(null, Typeface.BOLD);
+       // View vi = View.inflate(R.layout.activity_main);
+
+       // TextView tv = (TextView)vi.findViewById(R.id.mainText);/*
+        //tv.setTypeface(null, Typeface.BOLD);
+      //  r1.addView(vi);
     }
 
     public void Italic() {
@@ -33,17 +38,16 @@ public class popup extends Activity {
     }
     public void Underl() {
         TextView tv = (TextView)findViewById(R.id.mainText);
-        tv.setPaintFlags(tv.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
     }
 
     public void init() {
         bold = (ImageButton) findViewById(R.id.bold);
         italic = (ImageButton)findViewById(R.id.italic);
-        under = (ImageButton)findViewById(R.id.underline);
-        highlight = (ImageButton) findViewById(R.id.highlight);
-        listdot = (ImageButton)findViewById(R.id.listdot);
-        listnumber= (ImageButton)findViewById(R.id.listnumber);
-        checkbox = (ImageButton)findViewById(R.id.checkbox);
+
+        RelativeLayout r1 = (RelativeLayout)findViewById(R.id.referenceLayout);
     }
+//-+++++++++++++++++++++++++++++++++-
+
+
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:id="@+id/referenceLayout"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -92,7 +92,7 @@
             android:onClick="open1"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:src = "@mipmap/ic_action_signal" />
+            android:src = "@mipmap/ic_action_folder_open" />
 
     </LinearLayout>
 
@@ -186,8 +186,9 @@
 
 
             <Button
-                android:layout_gravity="bottom"
-                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:paddingTop="30dp"
+                android:layout_height="wrap_content"
                 android:textColor="#b5f681"
                 android:onClick="login"
                 android:layout_width="match_parent"
